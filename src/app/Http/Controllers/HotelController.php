@@ -90,8 +90,14 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Hotel $hotel)
     {
-        //
+        try {
+            $hotel->delete();
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.hotel')->with('message-error', __('Database error'));
+        }
+
+        return redirect()->route('admin.hotel')->with('message-success', __('Successfully deleted'));
     }
 }

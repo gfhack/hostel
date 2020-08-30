@@ -21,5 +21,6 @@
     "Room": "Quarto",
 
     "Database error": "Erro no banco de dados",
-    "Successfully created": "Criado com sucesso"
+    "Successfully created": "Criado com sucesso",
+    "Successfully deleted": "Excluído com sucesso"
 }

@@ -6,6 +6,6 @@
     {{ __('Edit') }}
 </a>
 
-<a type="button" class="btn btn-danger">
-    {{ __('Delete') }}
-</a>
+{!! Form::model($hotel, ['route' => ['admin.hotel.destroy', $hotel->id], 'method' => 'delete']) !!}
+    {{ Form::submit(__('Delete'), ['class' => 'btn btn-danger']) }}
+{!! Form::close() !!}
