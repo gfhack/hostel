@@ -6,6 +6,7 @@
         <a class="py-2 d-none d-md-inline-block" href="#">
             Quartos e Hotéis
         </a>
+
         @guest
             <a class="py-2 d-none d-md-inline-block" href="{{ route('login') }}">
                 Login
@@ -15,10 +16,10 @@
             </a>
         @endguest
 
-        @if (Auth::user()->is_admin)
-            <a class="py-2 d-none d-md-inline-block" href="{{ route('admin.hotels') }}">
+        @can('manage-hotel-room')
+            <a class="py-2 d-none d-md-inline-block" href="{{ route('admin.hotel') }}">
                 Gerenciar Quartos e Hotéis
             </a>
-        @endif
+        @endcan
     </div>
 </nav>

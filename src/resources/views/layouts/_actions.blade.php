@@ -1,4 +1,4 @@
-<a class="btn btn-primary">
+<a class="btn btn-primary" href="{{ route("{$route}.show", $id) }}">
     {{ __('View') }}
 </a>
 

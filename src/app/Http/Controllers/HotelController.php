@@ -47,9 +47,9 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Hotel $hotel)
     {
-        //
+        return view('hotels.show', compact('hotel', $hotel));
     }
 
     /**
