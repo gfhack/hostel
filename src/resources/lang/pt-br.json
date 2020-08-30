@@ -15,6 +15,11 @@
     "View": "Visualizar",
     "Edit": "Editar",
     "Delete": "Excluir",
+    "Create": "Cadastrar",
 
-    "Room": "Quarto"
+    "New": "Novo",
+    "Room": "Quarto",
+
+    "Database error": "Erro no banco de dados",
+    "Successfully created": "Criado com sucesso"
 }

@@ -8,6 +8,8 @@
         @include('layouts._navbar')
 
         <main class="container py-4">
+            @include('layouts._flash-message')
+
             @yield('content')
         </main>
     </div>

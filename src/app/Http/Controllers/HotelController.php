@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Hotel;
+use App\Http\Requests\HotelRequest;
 
 class HotelController extends Controller
 {
@@ -27,7 +28,9 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        $hotel = new Hotel();
+
+        return view('hotels.form', compact('hotel', $hotel));
     }
 
     /**
@@ -36,9 +39,15 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HotelRequest $request)
     {
-        //
+        try {
+            Hotel::create($request->validated());
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.hotel')->with('message-error', __('Database error'));
+        }
+
+        return redirect()->route('admin.hotel')->with('message-success', __('Successfully created'));
     }
 
     /**

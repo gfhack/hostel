@@ -18,6 +18,12 @@
                 </th>
                 <th scope="col">
                     {{ __('Actions') }}
+
+                </th>
+                <th scope="col">
+                    <a class="btn btn-success" href="{{ route('admin.hotel.create') }}">
+                        {{ __('New') }}
+                    </a>
                 </th>
             </tr>
         </thead>
@@ -36,7 +42,7 @@
                     <td>
                         {{ $hotel->created_at }}
                     </td>
-                    <td>
+                    <td colspan="2">
                         @include('layouts._actions', [
                             'id' => $hotel->id,
                             'route' => 'admin.hotel',
