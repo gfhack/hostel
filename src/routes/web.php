@@ -29,3 +29,7 @@ Route::post('/admin/hotels/edit/{hotel}', 'HotelController@update')->name('admin
 Route::get('/admin/hotels/{hotel}', 'HotelController@show')->name('admin.hotel.show');
 Route::post('/admin/hotels', 'HotelController@store')->name('admin.hotel.store');
 Route::delete('/admin/hotels/{hotel}', 'HotelController@destroy')->name('admin.hotel.destroy');
+
+Route::get('/admin/hotel/{hotel}/rooms', 'RoomController@index')->name('admin.hotel.room');
+Route::get('/admin/hotel/{hotel}/rooms/create', 'RoomController@create')->name('admin.hotel.room.create');
+Route::post('/admin/hotel/{hotel}/rooms', 'RoomController@store')->name('admin.hotel.room.store');

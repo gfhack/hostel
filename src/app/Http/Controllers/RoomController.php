@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Room;
 use App\Hotel;
-use App\Http\Requests\HotelRequest;
+use App\Http\Requests\RoomRequest;
 
-class HotelController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Hotel $hotel)
     {
-        $hotels = Hotel::all();
+        $rooms = $hotel->rooms;
 
-        return view('hotels.index', compact('hotels'));
+        return view('rooms.index', compact('rooms', 'hotel'));
     }
 
     /**
@@ -26,11 +25,11 @@ class HotelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Hotel $hotel)
     {
-        return view('hotels.form', [
-            'hotel' => new Hotel(),
-            'route' => ['route' => 'admin.hotel.store'],
+        return view('rooms.form', [
+            'room' => new Room(),
+            'route' => ['route' => ['admin.hotel.room.store', $hotel->id]],
         ]);
     }
 
@@ -40,15 +39,15 @@ class HotelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HotelRequest $request)
+    public function store(RoomRequest $request, Hotel $hotel)
     {
         try {
-            Hotel::create($request->validated());
+            $hotel->rooms()->create($request->validated());
         } catch (\Throwable $th) {
-            return redirect()->route('admin.hotel')->with('message-error', __('Database error'));
+            return redirect()->route('admin.hotel.room', $hotel->id)->with('message-error', __('Database error'));
         }
 
-        return redirect()->route('admin.hotel')->with('message-success', __('Successfully created'));
+        return redirect()->route('admin.hotel.room',$hotel->id)->with('message-success', __('Successfully created'));
     }
 
     /**
@@ -83,7 +82,7 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(HotelRequest $request, Hotel $hotel)
+    public function update(RoomRequest $request, Hotel $hotel)
     {
         $hotel->fill($request->validated());
         $hotel->save();

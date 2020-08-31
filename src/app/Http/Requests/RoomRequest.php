@@ -6,7 +6,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class HotelRequest extends FormRequest
+class RoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +26,12 @@ class HotelRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'description' => [
                 'required',
                 'string',
-                (!!$this->hotel)
-                    ? Rule::unique('hotels')->ignore($this->hotel->id)
-                    : 'unique:hotels,name'
+                (false)
+                    ? Rule::unique('rooms')->ignore($this->hotel->id)
+                    : 'unique:rooms,description'
             ]
         ];
     }

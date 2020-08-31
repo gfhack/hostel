@@ -8,6 +8,7 @@
 
     "Rooms and Hotels": "Quartos e hotéis",
     "Name": "Nome",
+    "Description": "Descrição",
     "Updated at": "Atualizado em",
     "Created at": "Criado em",
     "Actions": "Ações",
@@ -20,6 +21,7 @@
 
     "New": "Novo",
     "Room": "Quarto",
+    "Rooms": "Quartos",
 
     "Database error": "Erro no banco de dados",
     "Successfully created": "Criado com sucesso",
