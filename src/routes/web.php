@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/hotels', 'HotelController@index')->name('admin.hotel');
 Route::get('/admin/hotels/create', 'HotelController@create')->name('admin.hotel.create');
+Route::get('/admin/hotels/edit/{hotel}', 'HotelController@edit')->name('admin.hotel.edit');
+Route::post('/admin/hotels/edit/{hotel}', 'HotelController@update')->name('admin.hotel.update');
 Route::get('/admin/hotels/{hotel}', 'HotelController@show')->name('admin.hotel.show');
 Route::post('/admin/hotels', 'HotelController@store')->name('admin.hotel.store');
 Route::delete('/admin/hotels/{hotel}', 'HotelController@destroy')->name('admin.hotel.destroy');

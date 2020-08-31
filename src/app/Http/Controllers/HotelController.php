@@ -30,7 +30,10 @@ class HotelController extends Controller
     {
         $hotel = new Hotel();
 
-        return view('hotels.form', compact('hotel', $hotel));
+        return view('hotels.form', [
+            'hotel' => $hotel,
+            'route' => ['route' => 'admin.hotel.store'],
+        ]);
     }
 
     /**
@@ -58,7 +61,7 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        return view('hotels.show', compact('hotel', $hotel));
+        return view('hotels.show', compact('hotel'));
     }
 
     /**
@@ -67,9 +70,12 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Hotel $hotel)
     {
-        //
+        return view('hotels.form', [
+            'hotel' => $hotel,
+            'route' => ['route' => ['admin.hotel.update', $hotel->id]],
+        ]);
     }
 
     /**
@@ -79,9 +85,12 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HotelRequest $request, Hotel $hotel)
     {
-        //
+        $hotel->fill($request->validated());
+        $hotel->save();
+
+        return redirect()->route('admin.hotel')->with('message-success', __('Successfully updated'));
     }
 
     /**

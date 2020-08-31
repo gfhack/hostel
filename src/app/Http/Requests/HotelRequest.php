@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class HotelRequest extends FormRequest
 {
@@ -14,7 +15,7 @@ class HotelRequest extends FormRequest
      */
     public function authorize()
     {
-        return \Gate::allows('manage-hotel-room');
+        return Gate::allows('manage-hotel-room');
     }
 
     /**
@@ -29,7 +30,7 @@ class HotelRequest extends FormRequest
                 'required',
                 'string',
                 ($this->method() == 'POST')
-                    ? Rule::unique('hotels')->ignore(1)
+                    ? Rule::unique('hotels')->ignore($this->hotel->id)
                     : 'unique:hotels,name'
             ]
         ];

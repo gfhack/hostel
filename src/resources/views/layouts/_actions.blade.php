@@ -2,7 +2,7 @@
     {{ __('View') }}
 </a>
 
-<a type="button" class="btn btn-secondary">
+<a type="button" class="btn btn-secondary" href="{{ route("{$route}.edit", $id) }}">
     {{ __('Edit') }}
 </a>
 

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-{!! Form::model($hotel, ['route' => 'admin.hotel.store']) !!}
+{!! Form::model($hotel, $route) !!}
     @include('form.text-field', ['field' => 'Name'])
 
-    {{ Form::submit(__('Create'), ['class' => 'btn btn-primary']) }}
+    {{ Form::submit(__('Save'), ['class' => 'btn btn-primary']) }}
 {!! Form::close() !!}
 @endsection
