@@ -13,11 +13,15 @@
     "Created at": "Criado em",
     "Actions": "Ações",
 
+    "Go back": "Voltar",
+
     "View": "Visualizar",
     "Edit": "Editar",
     "Delete": "Excluir",
     "Create": "Cadastrar",
     "Save": "Salvar",
+
+    "Create new room": "Cadastrar novo quarto",
 
     "New": "Novo",
     "Room": "Quarto",

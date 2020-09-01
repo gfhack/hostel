@@ -56,9 +56,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function show(Hotel $hotel, Room $room)
     {
-        return view('hotels.show', compact('hotel'));
+        return view('rooms.show', compact('hotel', 'room'));
     }
 
     /**
@@ -67,11 +67,11 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hotel $hotel)
+    public function edit(Hotel $hotel, Room $room)
     {
-        return view('hotels.form', [
-            'hotel' => $hotel,
-            'route' => ['route' => ['admin.hotel.update', $hotel->id]],
+        return view('rooms.form', [
+            'room' => $room,
+            'route' => ['route' => ['admin.hotel.room.update', $hotel->id, $room->id]],
         ]);
     }
 
@@ -82,12 +82,12 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoomRequest $request, Hotel $hotel)
+    public function update(RoomRequest $request, Hotel $hotel, Room $room)
     {
-        $hotel->fill($request->validated());
-        $hotel->save();
+        $room->fill($request->validated());
+        $room->save();
 
-        return redirect()->route('admin.hotel')->with('message-success', __('Successfully updated'));
+        return redirect()->route('admin.hotel.room', $hotel->id)->with('message-success', __('Successfully updated'));
     }
 
     /**
@@ -96,14 +96,14 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(Hotel $hotel, Room $room)
     {
         try {
-            $hotel->delete();
+            $room->delete();
         } catch (\Throwable $th) {
-            return redirect()->route('admin.hotel')->with('message-error', __('Database error'));
+            return redirect()->route('admin.hotel.room', $hotel->id)->with('message-error', __('Database error'));
         }
 
-        return redirect()->route('admin.hotel')->with('message-success', __('Successfully deleted'));
+        return redirect()->route('admin.hotel.room', $hotel->id)->with('message-success', __('Successfully deleted'));
     }
 }

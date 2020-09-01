@@ -29,8 +29,8 @@ class RoomRequest extends FormRequest
             'description' => [
                 'required',
                 'string',
-                (false)
-                    ? Rule::unique('rooms')->ignore($this->hotel->id)
+                (!!$this->room)
+                    ? Rule::unique('rooms')->ignore($this->room->id)
                     : 'unique:rooms,description'
             ]
         ];

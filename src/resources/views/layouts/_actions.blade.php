@@ -6,10 +6,6 @@
     {{ __('Edit') }}
 </a>
 
-<a type="button" class="btn btn-dark" href="{{ route("{$route}.room", $id) }}">
-    {{ __('Rooms') }}
-</a>
-
-{!! Form::model($hotel, ['route' => ['admin.hotel.destroy', $hotel->id], 'method' => 'delete']) !!}
+{!! Form::model($hotel, ['route' => ["{$route}.destroy", $id], 'method' => 'delete']) !!}
     {{ Form::submit(__('Delete'), ['class' => 'btn btn-danger']) }}
 {!! Form::close() !!}

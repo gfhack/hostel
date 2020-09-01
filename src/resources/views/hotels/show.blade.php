@@ -18,10 +18,24 @@
 
         <div class="col-6">
             <ul class="list-group">
+                @forelse ($hotel->rooms as $room)
                 <li class="list-group-item">
-                    <strong>{{ __('Room') }}:</strong> Quarto 1
+                    <strong>{{ __('Room') }} #{{ $room->id }}:</strong> {{ $room->description }}
                 </li>
+                @empty
+                <li class="list-group-item">
+                    <a class="btn btn-success" href="{{ route('admin.hotel.room.create', $hotel->id) }}">
+                        {{ __('Create new room') }}
+                    </a>
+                </li>
+                @endforelse
             </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            @include('hotels._go-back')
         </div>
     </div>
 @endsection

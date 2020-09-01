@@ -43,6 +43,10 @@
                         {{ $hotel->created_at }}
                     </td>
                     <td colspan="2">
+                        <a type="button" class="btn btn-dark" href="{{ route("admin.hotel.room", $hotel->id) }}">
+                            {{ __('Rooms') }}
+                        </a>
+
                         @include('layouts._actions', [
                             'id' => $hotel->id,
                             'route' => 'admin.hotel',

@@ -59,6 +59,7 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
+        $hotel->loadMissing('rooms');
         return view('hotels.show', compact('hotel'));
     }
 

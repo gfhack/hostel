@@ -41,12 +41,12 @@
                     <td>
                         {{ $room->created_at }}
                     </td>
-                    {{-- <td colspan="2">
+                    <td colspan="2">
                         @include('layouts._actions', [
-                            'id' => $hotel->id,
-                            'route' => 'admin.hotel',
+                            'id' => [$hotel->id, $room->id],
+                            'route' => 'admin.hotel.room',
                         ])
-                    </td> --}}
+                    </td>
                 </tr>
             @endforeach
         </tbody>
