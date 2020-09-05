@@ -11,16 +11,14 @@
                     {{ __('Description') }}
                 </th>
                 <th scope="col">
-                    {{ __('Updated at') }}
                 </th>
                 <th scope="col">
-                    {{ __('Created at') }}
                 </th>
                 <th scope="col">
-                    {{ __('Actions') }}
-                </th>
-                <th scope="col">
-                    <a class="btn btn-success" href="{{ route('admin.hotel.room.create', $hotel->id) }}">
+                    <a
+                        class="btn btn-success btn-block"
+                        href="{{ route('admin.hotel.room.create', $hotel->id) }}"
+                    >
                         {{ __('New') }}
                     </a>
                 </th>
@@ -36,12 +34,25 @@
                         {{ $room->description }}
                     </td>
                     <td>
-                        {{ $room->updated_at }}
+                        <span class="d-block">
+                            <strong>{{ __('Created at') }}:</strong>
+                            {{ $room->created_at }}
+                        </span>
+                        <span class="d-block">
+                            <strong>{{ __('Updated at') }}:</strong>
+                            {{ $room->updated_at }}
+                        </span>
                     </td>
                     <td>
-                        {{ $room->created_at }}
+                        <a
+                            type="button"
+                            class="btn btn-dark btn-block"
+                            href="{{ route("admin.hotel.show", $hotel->id) }}"
+                        >
+                            {{ __('Hotel') }}
+                        </a>
                     </td>
-                    <td colspan="2">
+                    <td>
                         @include('layouts._actions', [
                             'id' => [$hotel->id, $room->id],
                             'route' => 'admin.hotel.room',

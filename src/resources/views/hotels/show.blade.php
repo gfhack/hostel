@@ -24,7 +24,10 @@
                 </li>
                 @empty
                 <li class="list-group-item">
-                    <a class="btn btn-success" href="{{ route('admin.hotel.room.create', $hotel->id) }}">
+                    <a
+                        class="btn btn-success"
+                        href="{{ route('admin.hotel.room.create', $hotel->id) }}"
+                    >
                         {{ __('Create new room') }}
                     </a>
                 </li>
@@ -33,9 +36,9 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mt-1">
         <div class="col">
-            @include('hotels._go-back')
+            @include('layouts._go-back', ['route' => route('admin.hotel')])
         </div>
     </div>
 @endsection

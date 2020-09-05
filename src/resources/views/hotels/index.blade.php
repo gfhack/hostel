@@ -11,17 +11,14 @@
                     {{ __('Name') }}
                 </th>
                 <th scope="col">
-                    {{ __('Updated at') }}
                 </th>
                 <th scope="col">
-                    {{ __('Created at') }}
                 </th>
                 <th scope="col">
-                    {{ __('Actions') }}
-
-                </th>
-                <th scope="col">
-                    <a class="btn btn-success" href="{{ route('admin.hotel.create') }}">
+                    <a
+                        class="btn btn-success btn-block"
+                        href="{{ route('admin.hotel.create') }}"
+                    >
                         {{ __('New') }}
                     </a>
                 </th>
@@ -37,16 +34,28 @@
                         {{ $hotel->name }}
                     </td>
                     <td>
-                        {{ $hotel->updated_at }}
+                        <span class="d-block">
+                            <strong>{{ __('Created at') }}:</strong>
+                            {{ $hotel->created_at }}
+                        </span>
+                        <span class="d-block">
+                            <strong>{{ __('Updated at') }}:</strong>
+                            {{ $hotel->updated_at }}
+                        </span>
                     </td>
                     <td>
-                        {{ $hotel->created_at }}
-                    </td>
-                    <td colspan="2">
-                        <a type="button" class="btn btn-dark" href="{{ route("admin.hotel.room", $hotel->id) }}">
+                        <a
+                            type="button"
+                            class="btn btn-dark btn-block"
+                            href="{{ route("admin.hotel.room", $hotel->id) }}"
+                        >
+                            <span class="badge badge-light">
+                                {{ $hotel->rooms->count() }}
+                            </span>
                             {{ __('Rooms') }}
                         </a>
-
+                    </td>
+                    <td>
                         @include('layouts._actions', [
                             'id' => $hotel->id,
                             'route' => 'admin.hotel',
