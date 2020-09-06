@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use App\Hotel;
 use App\Http\Requests\HotelRequest;
 
@@ -74,5 +75,12 @@ class HotelController extends Controller
         return redirect()
             ->route('admin.hotel')
             ->with('message-success', __('Successfully deleted'));
+    }
+
+    public function listRooms()
+    {
+        $rooms = Room::with(['hotel', 'users'])->paginate(5);
+
+        return view('rooms.list', compact('rooms'));
     }
 }

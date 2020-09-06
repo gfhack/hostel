@@ -27,6 +27,13 @@
     "Room": "Quarto",
     "Rooms": "Quartos",
 
+    "Vacant": "Vago",
+    "Occupied": "Ocupado",
+
+    "Not authorized.": "Não autorizado.",
+
+    "Available?": "Disponível?",
+
     "Database error": "Erro no banco de dados",
     "Successfully created": "Criado com sucesso",
     "Successfully updated": "Atualizado com sucesso",

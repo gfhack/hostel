@@ -14,4 +14,13 @@ class Room extends Model
     {
         return $this->belongsTo('App\Hotel');
     }
+
+    public function users() {
+        return $this->belongsToMany(
+            'App\User',
+            'reservations',
+            'room_id',
+            'user_id'
+        );
+    }
 }
