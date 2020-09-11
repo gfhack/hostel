@@ -22,3 +22,7 @@
 2. Preparar banco de dados
    1. Migrar as tabelas -> php artisan migrate
    2. Inserir dados iniciais -> php artisan db:seed
+
+3. Usuários para acesso
+   1. Email Admin: admin@hostel.com, senha: testing
+   1. Email Hóspede: hospede@hostel.com, senha: testing
