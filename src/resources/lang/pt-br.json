@@ -20,6 +20,10 @@
     "Delete": "Excluir",
     "Create": "Cadastrar",
     "Save": "Salvar",
+    "Dates": "Datas",
+
+    "Reservations": "Reservas",
+    "Manage hotel rooms": "Gerenciar quartos de hotéis",
 
     "Create new room": "Cadastrar novo quarto",
 
@@ -33,6 +37,9 @@
     "Not authorized.": "Não autorizado.",
 
     "Available?": "Disponível?",
+    "Reserve": "Reservar",
+    "Begin_at": "Inicia em",
+    "End_at": "Termina em",
 
     "Database error": "Erro no banco de dados",
     "Successfully created": "Criado com sucesso",

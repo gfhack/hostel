@@ -1,6 +1,6 @@
 <nav class="site-header sticky-top py-1">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="#">
+        <a class="py-2 d-none d-md-inline-block" href="/">
             Home
         </a>
 
@@ -13,10 +13,18 @@
             </a>
         @endguest
 
-        @can('manage-hotel-room')
-        <a class="py-2 d-none d-md-inline-block" href="{{ route('admin.hotel') }}">
-            Gerenciar Quartos e Hotéis
+        @auth
+        @cannot('manage-hotel-room')
+        <a class="py-2 d-none d-md-inline-block" href="{{ route('rooms.reserves') }}">
+            {{ __('Reservations') }}
         </a>
+        @endcannot
+        @endauth
+
+        @can('manage-hotel-room')
+            <a class="py-2 d-none d-md-inline-block" href="{{ route('admin.hotel') }}">
+                {{ __('Manage hotel rooms') }}
+            </a>
         @endcan
 
         @if (Auth::check())

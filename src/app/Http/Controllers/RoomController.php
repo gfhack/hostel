@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Room;
 use App\Hotel;
 use App\Http\Requests\RoomRequest;
+use App\Http\Requests\ReserveRequest;
 
 class RoomController extends Controller
 {
@@ -76,5 +77,31 @@ class RoomController extends Controller
         return redirect()
             ->route('admin.hotel.room', $hotel->id)
             ->with('message-success', __('Successfully deleted'));
+    }
+
+    public function reserves()
+    {
+        return view('rooms.reserves', [
+            'rooms' => auth()->user()->rooms()->with('hotel')->paginate(),
+        ]);
+    }
+
+    public function reservation(Hotel $hotel, Room $room)
+    {
+        return view('rooms.reserve', [
+            'room' => $room,
+            'hotel' => $hotel,
+            'route' => [
+                'route' => ['rooms.reservation', $hotel->id, $room->id],
+            ],
+        ]);
+    }
+
+    public function reserve(ReserveRequest $request, Hotel $hotel, Room $room)
+    {
+        auth()->user()->rooms()->attach($room->id, [
+            'begin_at' => $request->input('begin_at'),
+            'end_at' => $request->input('end_at'),
+        ]);
     }
 }

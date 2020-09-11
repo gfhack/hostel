@@ -21,6 +21,9 @@ class Room extends Model
             'reservations',
             'room_id',
             'user_id'
+        )->withPivot(
+            'begin_at',
+            'end_at'
         );
     }
 }

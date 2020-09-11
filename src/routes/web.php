@@ -22,6 +22,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotel-rooms', 'HotelController@listRooms')->name('rooms.list');
+Route::get('/hotel/{hotel}/room/{room}/reserve', 'RoomController@reservation')->name('rooms.reservation');
+
+Route::middleware(['web'])->group(function () {
+    Route::post('/hotel/{hotel}/room/{room}/reserve', 'RoomController@reserve')->name('rooms.reserve');
+    Route::get('/hotel-rooms/reserves', 'RoomController@reserves')->name('rooms.reserves');
+});
 
 Route::middleware(['hotel-manager'])->group(function () {
     Route::get('/admin/hotels', 'HotelController@index')->name('admin.hotel');

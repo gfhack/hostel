@@ -11,6 +11,7 @@
                     {{ __('Hotel') }}
                 </th>
                 <th scope="col">
+                    {{ __('Dates') }}
                 </th>
             </tr>
         </thead>
@@ -24,9 +25,14 @@
                         {{ $room->hotel->name }}
                     </td>
                     <td>
-                        <a class="btn btn-success" href="{{ route('rooms.reservation', [$room->hotel_id, $room->id]) }}">
-                            {{ __('Reserve') }}
-                        </a>
+                        <span class="d-block">
+                            <strong>{{ __('Begin_at') }}:</strong>
+                            {{ $room->pivot->begin_at }}
+                        </span>
+                        <span class="d-block">
+                            <strong>{{ __('End_at') }}:</strong>
+                            {{ $room->pivot->end_at }}
+                        </span>
                     </td>
                 </tr>
             @endforeach

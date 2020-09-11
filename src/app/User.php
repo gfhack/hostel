@@ -43,6 +43,9 @@ class User extends Authenticatable
             'reservations',
             'user_id',
             'room_id'
+        )->withPivot(
+            'begin_at',
+            'end_at'
         );
     }
 }
